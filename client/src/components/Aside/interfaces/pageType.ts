@@ -1,0 +1,1 @@
+export type PageType = "Mapa actual" | "Mapas base" | "Galería de imágenes"

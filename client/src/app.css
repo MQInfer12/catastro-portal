@@ -1,0 +1,40 @@
+@font-face {
+  font-family: Arciform;
+  src: url("./assets/fonts/Arciform.otf") format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arciform;
+  letter-spacing: .5px;
+  /* GRAYS */
+  --white: #FFFFFF;
+  --gray-50: #F0F1F3;  
+  --gray-100: #E6E8EB;
+  --gray-200: #C3C7CE;
+  --gray-300: #A5ACB5;
+  --gray-400: #87909D;
+  --gray-500: #697484;
+  --gray-600: #556070;
+  --gray-700: #424E60;
+  --gray-800: #2B384C;
+  --gray-900: #132238;
+  /* COLORS */
+  --yellow-1: #f9b100;
+  --yellow-2: #f18721;
+  --red-1: #ea547c;
+  --red-2: #ae1857;
+  --purple-1: #6d56a0;
+  --purple-2: #482778;
+  --blue-1: #4ac1e0;
+  --blue-2: #00acd8;
+  --green-1: #4fb9a8;
+  --green-2: #009877;
+}
+
+svg {
+  height: 100%;
+  width: 100%;
+}
