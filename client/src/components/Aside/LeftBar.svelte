@@ -2,6 +2,7 @@
   import IconImage from "../../icons/IconImage.svelte";
   import IconLayers from "../../icons/IconLayers.svelte";
   import IconMap from "../../icons/IconMap.svelte";
+  import IconTarget from "../../icons/IconTarget.svelte";
   import IconWorld from "../../icons/IconWorld.svelte";
   import LeftIconButton from "./LeftIconButton.svelte";
   import { page } from "./store/page";
@@ -33,6 +34,22 @@
     disabled={$page === "Galería de imágenes"}
   >
     <IconImage />
+  </LeftIconButton>
+  <LeftIconButton 
+    on:click={() => $page = "Capas WMS"} 
+    title="Capas WMS" 
+    color="blue"
+    disabled={$page === "Capas WMS"}
+  >
+    <IconLayers />
+  </LeftIconButton>
+  <LeftIconButton 
+    on:click={() => $page = "Capas de información"} 
+    title="Capas de información" 
+    color="green"
+    disabled={$page === "Capas de información"}
+  >
+    <IconTarget />
   </LeftIconButton>
 </div>
 

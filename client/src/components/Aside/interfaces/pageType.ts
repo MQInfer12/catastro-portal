@@ -1,1 +1,1 @@
-export type PageType = "Mapa actual" | "Mapas base" | "Galería de imágenes"
+export type PageType = "Mapa actual" | "Mapas base" | "Galería de imágenes" | "Capas WMS" | "Capas de información"

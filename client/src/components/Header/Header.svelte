@@ -1,8 +1,8 @@
 <script lang="ts">
   import Controls from "./Controls.svelte";
-import Data from "./Data.svelte";
-import Logo from "./Logo.svelte";
-
+  import Data from "./Data.svelte";
+  import Logo from "./Logo.svelte";
+  import SearchModal from "./SearchModal.svelte";
 </script>
 
 <header>
@@ -11,6 +11,7 @@ import Logo from "./Logo.svelte";
     <Data />
   </div>
   <Controls />
+  <SearchModal />
 </header>
 
 <style>

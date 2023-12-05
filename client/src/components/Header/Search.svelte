@@ -12,23 +12,26 @@
   import { searchResult, type SearchResult } from "../../global/store/search";
 
   let filter = "";
+  let searchOptions: SearchOption[] = [];
+  const getSearchOptions = () => {
+    searchOptions = $services
+      .map(service => service.data?.features
+        ?.map(feature => {
+          return {
+            id: feature.id,
+            text: feature.properties[service.nameColumn],
+            small: service.extraColumn ? feature.properties[service.extraColumn] : "",
+            searchBy: service.name + " " + feature.properties[service.nameColumn],
+            type: service.name,
+            color: service.color
+          }
+        })
+      )
+      .filter(service => service !== undefined)
+      .flat() as SearchOption[];
+  }
 
-  const searchOptions: SearchOption[] = $services
-    .map(service => service.data?.features
-      .map(feature => {
-        return {
-          id: feature.id,
-          text: feature.properties[service.nameColumn],
-          small: service.extraColumn ? feature.properties[service.extraColumn] : "",
-          searchBy: service.name + " " + feature.properties[service.nameColumn],
-          type: service.name,
-          color: service.color
-        }
-      })
-    )
-    .filter(service => service !== undefined)
-    .flat() as SearchOption[];
-
+  $: $services, getSearchOptions();
   $: filtered = searchOptions.filter(option => option.searchBy.toLocaleLowerCase().includes(filter.toLocaleLowerCase()));
   $: active = filter.length > 0 && filtered.length !== 0;
 

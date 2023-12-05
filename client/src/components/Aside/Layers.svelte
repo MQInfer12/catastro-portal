@@ -1,9 +1,10 @@
 <script lang="ts">
+  import type { ColorType } from "../../global/interfaces/colorType";
   import { map } from "../../global/store/map";
   import LayerCard from "./LayerCard.svelte";
-  import { catastroLayers } from "./data/catastroLayers";
+  import type { CatastroLayer } from "./interfaces/catastroLayer";
 
-  export let layers = $catastroLayers;
+  export let layers: CatastroLayer[] = [];
   export let disabled = false;
 
   $: layers.forEach(layer => {
@@ -13,6 +14,8 @@
       $map.remove(layer.data);
     }
   });
+
+  export let color: ColorType = "neutral";
 </script>
 
 <div>
@@ -20,6 +23,7 @@
     <LayerCard 
       {disabled}
       {layer}
+      {color}
       on:click={() => layer.active = !layer.active} 
     />
   {/each}

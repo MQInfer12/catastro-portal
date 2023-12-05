@@ -1,5 +1,4 @@
 import WMSLayer from "@arcgis/core/layers/WMSLayer.js";
-import MapImageLayer from "@arcgis/core/layers/MapImageLayer.js";
 import type { CatastroLayer } from "../interfaces/catastroLayer";
 import { writable } from "svelte/store";
 import LDemografia from "../../../assets/images/layers/demografia.png";
@@ -31,12 +30,4 @@ export const catastroLayers = writable<CatastroLayer[]>([
       url: "http://186.121.246.218:6080/arcgis/services/catastro/manzanasWms/MapServer/WMSServer",
     })
   },
-  /* {
-    name: "Sat",
-    active: false,
-    color: "var(--green-1)",
-    data: new MapImageLayer({
-      url: "http://192.168.105.219:6080/arcgis/rest/services/imagenes/imagen2022/MapServer",
-    }),
-  }, */
 ]);

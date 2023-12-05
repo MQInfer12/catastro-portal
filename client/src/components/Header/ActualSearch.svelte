@@ -1,9 +1,10 @@
 <script>
   import Button from "../../global/components/Button.svelte";
   import IconContainer from "../../global/components/IconContainer.svelte";
-import { searchResult } from "../../global/store/search";
+  import { searchResult } from "../../global/store/search";
   import IconDetail from "../../icons/IconDetail.svelte";
   import IconX from "../../icons/IconX.svelte";
+    import { showSearchDetails } from "./utilities/showSearchDetails";
 </script>
 
 {#if $searchResult}
@@ -13,6 +14,7 @@ import { searchResult } from "../../global/store/search";
     color={$searchResult.option.color}  
     text={$searchResult.option.text}  
     iconPos="right"
+    on:click={showSearchDetails}
   >
     <IconContainer><IconDetail /></IconContainer>
   </Button>

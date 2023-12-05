@@ -20,6 +20,7 @@
     height: 130px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     border: none;
     border-radius: 8px;
     overflow: hidden;
@@ -37,6 +38,7 @@
   }
   .img-container {
     height: 60%;
+    width: 100%;
     position: relative;
   }
   img {

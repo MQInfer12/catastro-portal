@@ -1,15 +1,17 @@
 <script lang="ts">
+    import type { ColorType } from "../../global/interfaces/colorType";
   import IconActive from "./IconActive.svelte";
   import type { CatastroLayer } from "./interfaces/catastroLayer";
   export let layer: CatastroLayer;
   export let disabled = false;
+  export let color: ColorType = "neutral";
 </script>
 
 <button {disabled} on:click>
   <div class="img-container">
     <img src={layer.src} alt={`prev-${layer.name}`}>
     {#if !disabled}
-    <IconActive active={layer.active} color="purple" />
+    <IconActive active={layer.active} {color} />
     {/if}
   </div>
   <p>{layer.name}</p>

@@ -6,17 +6,21 @@
   import IconCheck from "../../icons/IconCheck.svelte";
   import IconDetail from "../../icons/IconDetail.svelte";
   import IconImage from "../../icons/IconImage.svelte";
+    import IconLayers from "../../icons/IconLayers.svelte";
   import IconSearch from "../../icons/IconSearch.svelte";
   import IconWorld from "../../icons/IconWorld.svelte";
   import IconX from "../../icons/IconX.svelte";
+    import { showSearchDetails } from "../Header/utilities/showSearchDetails";
   import BasemapCard from "./BasemapCard.svelte";
   import Layers from "./Layers.svelte";
   import { arcgisBasemaps } from "./data/arcgisBasemaps";
+    import { catastroImages } from "./data/catastroImages";
   import { catastroLayers } from "./data/catastroLayers";
   import { page } from "./store/page";
 
   const actualBasemap = arcgisBasemaps.find(bm => bm.basemap === $map.basemap.id);
   const actualLayers = $catastroLayers.filter(layer => layer.active);
+  const actualImages = $catastroImages.filter(layer => layer.active);
 </script>
 <section>
   {#if actualBasemap}
@@ -38,6 +42,7 @@
       <Button 
         color={$searchResult.option.color}
         text="Ver detalle"
+        on:click={showSearchDetails}
       >
         <IconContainer><IconDetail /></IconContainer>
       </Button>
@@ -69,6 +74,25 @@
   </div>
   {/if}
   <h2>Imágenes</h2>
+  {#if actualImages.length}
+  <Layers 
+    layers={actualImages}
+    disabled
+  />
+  {/if}
+  <div class="info">
+    {#if !actualImages.length}
+    <p>Selecciona imágenes desde nuestra galería</p>
+    {/if}
+    <Button 
+      color="purple"
+      on:click={() => $page = "Galería de imágenes"}
+      text={actualImages.length ? "Cambiar" : "Seleccionar"}
+    >
+      <IconContainer><IconImage /></IconContainer>
+    </Button>
+  </div>
+  <h2>Capas WMS</h2>
   {#if actualLayers.length}
   <Layers 
     layers={actualLayers}
@@ -77,14 +101,14 @@
   {/if}
   <div class="info">
     {#if !actualLayers.length}
-    <p>Selecciona imágenes desde nuestra galería</p>
+    <p>Selecciona capas para mostrarlas en el mapa</p>
     {/if}
     <Button 
-      color="purple"
-      on:click={() => $page = "Galería de imágenes"}
+      color="blue"
+      on:click={() => $page = "Capas WMS"}
       text={actualLayers.length ? "Cambiar" : "Seleccionar"}
     >
-      <IconContainer><IconImage /></IconContainer>
+      <IconContainer><IconLayers /></IconContainer>
     </Button>
   </div>
 </section>
