@@ -1,8 +1,11 @@
 <script lang="ts">
   import type { ColorType } from "../interfaces/colorType";
 
+  type IconPos = "left" | "right";
+
   export let color: ColorType;
   export let text: string = "";
+  export let iconPos: IconPos = "left";
 </script>
 
 <button
@@ -13,8 +16,13 @@
     padding: ${text ? "0 12px" : "0 8px"} 
   `}
 >
-  <slot />
+  {#if iconPos === "left"}
+    <slot />
+  {/if}
   {text}
+  {#if iconPos === "right"}
+    <slot />
+  {/if}
 </button>
 
 <style>

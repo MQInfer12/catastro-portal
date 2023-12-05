@@ -2,7 +2,6 @@
   import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer";
   import Button from "../../global/components/Button.svelte";
   import IconContainer from "../../global/components/IconContainer.svelte";
-  import type { GeoJSON } from "../../global/interfaces/geojson";
   import { map, searchFeatureLayer, view } from "../../global/store/map";
   import { services } from "../../global/store/services";
   import IconSearch from "../../icons/IconSearch.svelte";
@@ -94,7 +93,7 @@
 
 <div class="container">
   <Button
-    color="blue"
+    color={$searchResult ? $searchResult.option.color : "neutral"}
     on:click={handleSearchButton}
   >
     <IconContainer>
@@ -109,7 +108,7 @@
     <input 
       id="search" 
       type="text"
-      placeholder="Buscar..."
+      placeholder={$searchResult ? "Realiza otra búsqueda..." : "Realiza una búsqueda..."}
       bind:value={filter} 
       style={`border-radius: ${active ? "8px 8px 0 0" : "8px"}`}
     >

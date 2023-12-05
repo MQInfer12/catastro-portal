@@ -22,6 +22,8 @@
   --gray-800: #2B384C;
   --gray-900: #132238;
   /* COLORS */
+  --neutral-1: #c2b199;
+  --neutral-2: #978a78;
   --yellow-1: #f9b100;
   --yellow-2: #f18721;
   --red-1: #ea547c;
@@ -37,4 +39,8 @@
 svg {
   height: 100%;
   width: 100%;
+}
+
+hr {
+  border: 1px solid var(--gray-400);
 }

@@ -7,4 +7,4 @@ export interface SearchResult {
   geojson: GeoJSON
 }
 
-export const searchResult = writable<SearchResult>();
+export const searchResult = writable<SearchResult | null>(null);
