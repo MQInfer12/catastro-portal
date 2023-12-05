@@ -22,7 +22,7 @@ import Logo from "./Logo.svelte";
     background-color: var(--gray-700);
   }
   .info {
-    height: 60px;
+    height: 50px;
     display: flex;
     padding: 0 24px;
     align-items: center;

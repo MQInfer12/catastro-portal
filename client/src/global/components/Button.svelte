@@ -2,14 +2,15 @@
   import type { ColorType } from "../interfaces/colorType";
 
   export let color: ColorType;
-  export let text: string;
+  export let text: string = "";
 </script>
 
 <button
   on:click
   style={`
     --color-1: var(--${color}-1); 
-    --color-2: var(--${color}-2); 
+    --color-2: var(--${color}-2);
+    padding: ${text ? "0 12px" : "0 8px"} 
   `}
 >
   <slot />
