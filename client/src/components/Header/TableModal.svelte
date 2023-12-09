@@ -70,6 +70,7 @@
 <style>
   .container {
     padding: 16px;
+    width: 100%;
   }
   .table-container {
     border-radius: 8px;

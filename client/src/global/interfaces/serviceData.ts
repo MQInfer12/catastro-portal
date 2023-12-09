@@ -5,7 +5,7 @@ export interface ServiceData {
   id: number
   name: string
   url: string
-  img: string | null
+  src: string | null
   data: GeoJSON | null
   color: ColorType
   nameColumn: string

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { arcgisBasemaps } from "../../global/store/db/arcgisBasemaps";
-  import { map } from "../../global/store/map";
+  import { arcgisBasemaps, defaultBasemap } from "../../global/store/db/arcgisBasemaps";
+  import { map } from "../../global/store/state/map";
   import BasemapCard from "./BasemapCard.svelte";
 
   const changeBasemap = (basemap: string) => {
@@ -11,6 +11,14 @@
 </script>
 
 <div>
+  {#if $arcgisBasemaps.length === 0}
+  <BasemapCard 
+    src={defaultBasemap.src}
+    name={defaultBasemap.name}
+    active
+    on:click={() => changeBasemap(defaultBasemap.basemap)}
+  />
+  {:else}
   {#each $arcgisBasemaps as bm}
     <BasemapCard 
       src={bm.src}
@@ -19,6 +27,7 @@
       on:click={() => changeBasemap(bm.basemap)}
     />
   {/each}
+  {/if}
 </div>
 
 <style>

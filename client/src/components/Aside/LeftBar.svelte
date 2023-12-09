@@ -1,4 +1,5 @@
 <script lang="ts">
+  import IconConfig from "../../icons/IconConfig.svelte";
   import IconImage from "../../icons/IconImage.svelte";
   import IconLayers from "../../icons/IconLayers.svelte";
   import IconMap from "../../icons/IconMap.svelte";
@@ -51,6 +52,15 @@
     disabled={$page === "Capas de información"}
   >
     <IconTarget />
+  </LeftIconButton>
+  <hr />
+  <LeftIconButton
+  on:click={() => $page = "Configuración"} 
+    title="Configuración"
+    color="neutral"
+    disabled={$page === "Configuración"}
+  >
+    <IconConfig />
   </LeftIconButton>
 </div>
 

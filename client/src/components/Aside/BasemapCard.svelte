@@ -1,15 +1,20 @@
 <script lang="ts">
   import IconActive from "./IconActive.svelte";
+  import IconDefault from "./IconDefault.svelte";
 
   export let name: string;
-  export let src: string;
+  export let src: string | null;
   export let active: boolean;
   export let disabled = false;
 </script>
 
 <button {disabled} on:click>
   <div class="img-container">
-    <img {src} alt={`prev-${name}`} />
+    {#if src}
+      <img {src} alt={`prev-${name}`} />
+    {:else if !active}
+      <IconDefault type="basemap" color="red" />
+    {/if}
     <IconActive color="red" {active} />
   </div>
   <p>{name}</p>

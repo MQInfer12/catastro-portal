@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { clickModalState } from "../../global/store/clickModalState";
-  import { searchModalState } from "../../global/store/searchModal";
+  import { clickModalState } from "../../global/store/state/clickModalState";
+  import { searchModalState } from "../../global/store/state/searchModal";
   import Controls from "./Controls.svelte";
   import Data from "./Data.svelte";
   import Logo from "./Logo.svelte";

@@ -1,25 +1,24 @@
 <script>
   import Button from "../../global/components/Button.svelte";
   import IconContainer from "../../global/components/IconContainer.svelte";
-  import { arcgisBasemaps } from "../../global/store/db/arcgisBasemaps";
+  import { arcgisBasemaps, defaultBasemap } from "../../global/store/db/arcgisBasemaps";
   import { catastroImages } from "../../global/store/db/catastroImages";
   import { catastroLayers } from "../../global/store/db/catastroLayers";
-  import { map } from "../../global/store/map";
-  import { searchResult } from "../../global/store/search";
-  import IconCheck from "../../icons/IconCheck.svelte";
+  import { map } from "../../global/store/state/map";
+  import { searchResult } from "../../global/store/state/search";
   import IconDetail from "../../icons/IconDetail.svelte";
   import IconImage from "../../icons/IconImage.svelte";
-    import IconLayers from "../../icons/IconLayers.svelte";
+  import IconLayers from "../../icons/IconLayers.svelte";
   import IconSearch from "../../icons/IconSearch.svelte";
   import IconTarget from "../../icons/IconTarget.svelte";
   import IconWorld from "../../icons/IconWorld.svelte";
   import IconX from "../../icons/IconX.svelte";
-    import { showSearchDetails } from "../Header/utilities/showSearchDetails";
+  import { showSearchDetails } from "../Header/utilities/showSearchDetails";
   import BasemapCard from "./BasemapCard.svelte";
   import Layers from "./Layers.svelte";
   import { page } from "./store/page";
 
-  const actualBasemap = $arcgisBasemaps.find(bm => bm.basemap === $map.basemap.id);
+  const actualBasemap = $arcgisBasemaps.length === 0 ? defaultBasemap : $arcgisBasemaps.find(bm => bm.basemap === $map.basemap.id);
   const actualLayers = $catastroLayers.filter(layer => layer.active);
   const actualImages = $catastroImages.filter(layer => layer.active);
 </script>

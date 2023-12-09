@@ -15,7 +15,7 @@
   style={`
     --color-1: var(--${color}-1); 
     --color-2: var(--${color}-2);
-    padding: ${text ? "0 12px" : "0 8px"} 
+    padding: ${text ? "0 12px" : "0 8px"};
   `}
 >
   {#if iconPos === "left"}

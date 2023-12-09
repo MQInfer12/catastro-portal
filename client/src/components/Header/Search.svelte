@@ -2,15 +2,17 @@
   import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer";
   import Button from "../../global/components/Button.svelte";
   import IconContainer from "../../global/components/IconContainer.svelte";
-  import { map, searchFeatureLayer, view } from "../../global/store/map";
+  import { map, searchFeatureLayer, view } from "../../global/store/state/map";
   import { services } from "../../global/store/db/services";
   import IconSearch from "../../icons/IconSearch.svelte";
   import IconX from "../../icons/IconX.svelte";
   import SearchOptions from "./SearchOptions.svelte";
   import type { SearchOption } from "./interfaces/searchOption";
   import { createPointSymbol, createPolygonSymbol } from "../../global/utilities/colorToSymbol";
-  import { searchResult, type SearchResult } from "../../global/store/search";
+  import { searchResult, type SearchResult } from "../../global/store/state/search";
   import { page } from "../Aside/store/page";
+  import { appearMenu } from "../../global/store/state/appearMenu";
+  import IconSidemenu from "../../icons/IconSidemenu.svelte";
 
   $: disabled = $page === "Capas de información"
 
@@ -92,10 +94,15 @@
     });
   }
 
+  let innerWidth = 0;
+
+  $: thresholdButton = innerWidth >= 900;
   $: $searchResult, disabled, showGeoJson();
 </script>
 
+<svelte:window bind:innerWidth />
 <div class="container">
+  {#if thresholdButton}
   <Button
     {disabled}
     color={$searchResult ? $searchResult.option.color : "neutral"}
@@ -109,6 +116,14 @@
     {/if}
     </IconContainer>
   </Button>
+  {:else} 
+  <Button
+    color={$searchResult ? $searchResult.option.color : "neutral"}
+    on:click={() => $appearMenu = true}
+  >
+    <IconContainer><IconSidemenu /></IconContainer>
+  </Button>
+  {/if}
   <div class="input-container">
     <input 
       id="search" 
@@ -153,5 +168,10 @@
   }
   input::placeholder {
     color: var(--gray-500);
+  }
+  @media screen and (max-width: 1260px) {
+    .container, .input-container, input {
+      width: 100%;
+    }
   }
 </style>

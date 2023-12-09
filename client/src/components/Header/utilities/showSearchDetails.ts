@@ -1,5 +1,5 @@
-import { searchResult, type SearchResult } from "../../../global/store/search";
-import { searchModalState } from "../../../global/store/searchModal"
+import { searchResult, type SearchResult } from "../../../global/store/state/search";
+import { searchModalState } from "../../../global/store/state/searchModal"
 
 export const showSearchDetails = () => {
   let result: SearchResult | undefined;

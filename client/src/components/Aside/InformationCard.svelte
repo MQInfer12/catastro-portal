@@ -1,13 +1,19 @@
 <script lang="ts">
   import type { ServiceData } from "../../global/interfaces/serviceData";
+  import IconTarget from "../../icons/IconTarget.svelte";
   import IconActive from "./IconActive.svelte";
+  import IconDefault from "./IconDefault.svelte";
   export let service: ServiceData;
   export let active: boolean = false;
 </script>
 
 <button on:click>
   <div class="img-container">
-    <img src={service.img} alt={`prev-${service.name}`}>
+    {#if service.src}
+      <img src={service.src} alt={`prev-${service.name}`}>
+    {:else if !active}
+      <IconDefault type="target" color={service.color} />
+    {/if}
     <IconActive {active} color={service.color} />
   </div>
   <p>{service.name}</p>

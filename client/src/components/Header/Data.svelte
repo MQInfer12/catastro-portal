@@ -22,4 +22,9 @@
     color: var(--white);
     font-size: 14px;
   }
+  @media screen and (max-width: 540px) {
+    div {
+      display: none;
+    }
+  }
 </style>

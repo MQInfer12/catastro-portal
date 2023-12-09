@@ -1,10 +1,28 @@
 <script lang="ts">
+  import { blur, fly } from "svelte/transition";
+  import { appearMenu } from "../../global/store/state/appearMenu";
   import LeftBar from "./LeftBar.svelte";
   import RightBar from "./RightBar.svelte";
   import { page } from "./store/page";
+
+  let innerWidth = 0;
+  $: threshold = innerWidth >= 900;
 </script>
 
-<aside>
+<svelte:window bind:innerWidth />
+{#if (!threshold && $appearMenu)}
+  <button 
+    transition:blur={{ duration: 300 }}
+    class="bg" 
+    on:click={() => $appearMenu = false} 
+  />
+{/if}
+<aside
+  style={`${threshold ? "" : `
+    position: absolute;
+    transform: ${$appearMenu ? "translateX(0)" : "translateX(-100%)"}
+  `}`}
+>
   <div class="top">
     <h1>{$page}</h1>
   </div>
@@ -26,6 +44,7 @@
       "left right";
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
+    transition: all 0.3s;
   }
   .top {
     grid-area: top;
@@ -38,5 +57,13 @@
   .top > h1 {
     text-align: center;
     color: var(--white);
+  }
+  .bg {
+    position: fixed;
+    width: 100vw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, .4);
+    border: none;
+    z-index: 4;
   }
 </style>

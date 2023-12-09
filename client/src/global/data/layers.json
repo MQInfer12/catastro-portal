@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Demografía",
+    "active": false,
+    "src": null,
+    "url": "http://186.121.246.218:6080/arcgis/services/catastro/DEM_500/MapServer/WMSServer",
+    "type": "layer",
+    "data": null
+  },
+  {
+    "name": "OTBs",
+    "active": false,
+    "src": null,
+    "url": "http://186.121.246.218:6080/arcgis/services/planificacion/otbsDb/MapServer/WMSServer",
+    "type": "layer",
+    "data": null
+  },
+  {
+    "name": "Manzanas",
+    "active": false,
+    "src": null,
+    "url": "http://186.121.246.218:6080/arcgis/services/catastro/manzanasWms/MapServer/WMSServer",
+    "type": "layer",
+    "data": null
+  }
+]

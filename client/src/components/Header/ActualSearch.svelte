@@ -36,4 +36,16 @@
     color: var(--white);
     gap: 12px;
   }
+  @media screen and (max-width: 1260px) {
+    .container {
+      position: absolute;
+      width: 100%;
+      top: 100%;
+      padding: 7px 24px;
+      background-color: var(--gray-800);
+      left: 0;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
 </style>

@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Satélite 2022",
+    "active": false,
+    "src": null,
+    "url": "http://192.168.105.219:6080/arcgis/rest/services/imagenes/imagen2022/MapServer",
+    "type": "image",
+    "data": null
+  },
+  {
+    "name": "Imagen 2015",
+    "active": false,
+    "src": null,
+    "url": "http://192.168.105.219:6080/arcgis/rest/services/imagenes/imagen2015_500/MapServer",
+    "type": "image",
+    "data": null
+  }
+]

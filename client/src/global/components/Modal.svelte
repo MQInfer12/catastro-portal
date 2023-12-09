@@ -45,6 +45,7 @@
     max-height: 400px;
     border-radius: 8px;
     overflow: auto;
+    max-width: 100%;
   }
   .controls {
     display: flex;

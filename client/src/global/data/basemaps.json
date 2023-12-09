@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "src": null,
+    "name": "Gris",
+    "basemap": "gray-vector"
+  },
+  {
+    "id": 2,
+    "src": null,
+    "name": "Gris oscuro",
+    "basemap": "dark-gray-vector"
+  },
+  {
+    "id": 3,
+    "src": null,
+    "name": "Satélite",
+    "basemap": "satellite"
+  },
+  {
+    "id": 4,
+    "src": null,
+    "name": "Satélite híbrido",
+    "basemap": "hybrid"
+  },
+  {
+    "id": 5,
+    "src": null,
+    "name": "Open Street Maps",
+    "basemap": "osm"
+  },
+  {
+    "id": 6,
+    "src": null,
+    "name": "Open Street",
+    "basemap": "streets-vector"
+  },
+  {
+    "id": 7,
+    "src": null,
+    "name": "Open Street oscuro",
+    "basemap": "streets-night-vector"
+  },
+  {
+    "id": 8,
+    "src": null,
+    "name": "Open Street navegación",
+    "basemap": "streets-navigation-vector"
+  },
+  {
+    "id": 9,
+    "src": null,
+    "name": "Topo",
+    "basemap": "topo-vector"
+  },
+  {
+    "id": 10,
+    "src": null,
+    "name": "Open Street relieve",
+    "basemap": "streets-relief-vector"
+  },
+  {
+    "id": 11,
+    "src": null,
+    "name": "Topo 3D",
+    "basemap": "topo-3d"
+  },
+  {
+    "id": 12,
+    "src": null,
+    "name": "Navegación 3D",
+    "basemap": "navigation-3d"
+  }
+]

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { clickModalState } from "../../global/store/clickModalState";
-  import { clickResult } from "../../global/store/clickResult";
-  import { searchResult } from "../../global/store/search";
+  import { clickModalState } from "../../global/store/state/clickModalState";
+  import { clickResult } from "../../global/store/state/clickResult";
+  import { searchResult } from "../../global/store/state/search";
   import { page } from "../Aside/store/page";
   import ActualSearch from "./ActualSearch.svelte";
   import Search from "./Search.svelte";
@@ -35,11 +35,13 @@
 
 <style>
   section {
-    height: 50px;
+    min-height: 50px;
     display: flex;
-    padding: 0 24px;
-    align-items: center;
+    padding: 7px 24px;
     justify-content: space-between;
     background-color: var(--gray-800);
+    gap: 20px;
+    row-gap: 7px;
+    position: relative;
   }
 </style>

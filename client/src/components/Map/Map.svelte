@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { map, view } from "../../global/store/map";
+  import { map, view } from "../../global/store/state/map";
   import MapView from "@arcgis/core/views/MapView";
 
   const createMap = (domNode: HTMLDivElement) => {
