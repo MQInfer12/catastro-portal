@@ -28,12 +28,13 @@
   .container {
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    z-index: 2000;
   }
   .bg {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
+    border: none;
   }
   .content {
     position: fixed;

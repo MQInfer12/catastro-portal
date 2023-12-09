@@ -1,31 +1,33 @@
-<script>
+<script lang="ts">
   import Button from "../../global/components/Button.svelte";
   import IconContainer from "../../global/components/IconContainer.svelte";
-  import { searchResult } from "../../global/store/search";
+  import type { ColorType } from "../../global/interfaces/colorType";
   import IconDetail from "../../icons/IconDetail.svelte";
   import IconX from "../../icons/IconX.svelte";
-    import { showSearchDetails } from "./utilities/showSearchDetails";
+
+  export let text: string;
+  export let color: ColorType;
+  export let openModal: () => void;
+  export let destroy: () => void;
 </script>
 
-{#if $searchResult}
 <div class="container">
   <p>Viendo:</p>
   <Button
-    color={$searchResult.option.color}  
-    text={$searchResult.option.text}  
+    {color}
+    {text}
     iconPos="right"
-    on:click={showSearchDetails}
+    on:click={openModal}
   >
     <IconContainer><IconDetail /></IconContainer>
   </Button>
   <Button
-    color={$searchResult.option.color}    
-    on:click={() => $searchResult = null}
+    {color}  
+    on:click={destroy}
   >
     <IconContainer><IconX /></IconContainer>
   </Button>
 </div>
-{/if}
 
 <style>
   .container {

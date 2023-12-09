@@ -8,10 +8,12 @@
   export let disabled = false;
 
   $: layers.forEach(layer => {
-    if (layer.active) {
-      $map.add(layer.data);
-    } else {
-      $map.remove(layer.data);
+    if(layer.data) {
+      if (layer.active) {
+        $map.add(layer.data);
+      } else {
+        $map.remove(layer.data);
+      }
     }
   });
 

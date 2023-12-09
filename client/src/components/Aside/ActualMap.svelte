@@ -1,6 +1,9 @@
 <script>
   import Button from "../../global/components/Button.svelte";
   import IconContainer from "../../global/components/IconContainer.svelte";
+  import { arcgisBasemaps } from "../../global/store/db/arcgisBasemaps";
+  import { catastroImages } from "../../global/store/db/catastroImages";
+  import { catastroLayers } from "../../global/store/db/catastroLayers";
   import { map } from "../../global/store/map";
   import { searchResult } from "../../global/store/search";
   import IconCheck from "../../icons/IconCheck.svelte";
@@ -8,17 +11,15 @@
   import IconImage from "../../icons/IconImage.svelte";
     import IconLayers from "../../icons/IconLayers.svelte";
   import IconSearch from "../../icons/IconSearch.svelte";
+  import IconTarget from "../../icons/IconTarget.svelte";
   import IconWorld from "../../icons/IconWorld.svelte";
   import IconX from "../../icons/IconX.svelte";
     import { showSearchDetails } from "../Header/utilities/showSearchDetails";
   import BasemapCard from "./BasemapCard.svelte";
   import Layers from "./Layers.svelte";
-  import { arcgisBasemaps } from "./data/arcgisBasemaps";
-    import { catastroImages } from "./data/catastroImages";
-  import { catastroLayers } from "./data/catastroLayers";
   import { page } from "./store/page";
 
-  const actualBasemap = arcgisBasemaps.find(bm => bm.basemap === $map.basemap.id);
+  const actualBasemap = $arcgisBasemaps.find(bm => bm.basemap === $map.basemap.id);
   const actualLayers = $catastroLayers.filter(layer => layer.active);
   const actualImages = $catastroImages.filter(layer => layer.active);
 </script>
@@ -109,6 +110,18 @@
       text={actualLayers.length ? "Cambiar" : "Seleccionar"}
     >
       <IconContainer><IconLayers /></IconContainer>
+    </Button>
+  </div>
+  <hr />
+  <h2>Capas de información</h2>
+  <div class="info">
+    <p>Explora las distintas capas de información de una manera más completa</p>
+    <Button 
+      color="green"
+      on:click={() => $page = "Capas de información"}
+      text="Explorar"
+    >
+      <IconContainer><IconTarget /></IconContainer>
     </Button>
   </div>
 </section>

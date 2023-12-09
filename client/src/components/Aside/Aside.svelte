@@ -19,7 +19,7 @@
     width: 350px;
     height: 100%;
     /* box-shadow: 0px 0px 68px 0px rgba(0,0,0,0.3); */
-    z-index: 4;
+    z-index: 5;
     display: grid;
     grid-template-areas: 
       "left top"

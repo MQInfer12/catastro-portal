@@ -3,13 +3,16 @@
   import Button from "../../global/components/Button.svelte";
   import IconContainer from "../../global/components/IconContainer.svelte";
   import { map, searchFeatureLayer, view } from "../../global/store/map";
-  import { services } from "../../global/store/services";
+  import { services } from "../../global/store/db/services";
   import IconSearch from "../../icons/IconSearch.svelte";
   import IconX from "../../icons/IconX.svelte";
   import SearchOptions from "./SearchOptions.svelte";
   import type { SearchOption } from "./interfaces/searchOption";
   import { createPointSymbol, createPolygonSymbol } from "../../global/utilities/colorToSymbol";
   import { searchResult, type SearchResult } from "../../global/store/search";
+  import { page } from "../Aside/store/page";
+
+  $: disabled = $page === "Capas de información"
 
   let filter = "";
   let searchOptions: SearchOption[] = [];
@@ -33,7 +36,7 @@
 
   $: $services, getSearchOptions();
   $: filtered = searchOptions.filter(option => option.searchBy.toLocaleLowerCase().includes(filter.toLocaleLowerCase()));
-  $: active = filter.length > 0 && filtered.length !== 0;
+  $: active = (filter.length > 0 && filtered.length !== 0) && !disabled;
 
   const handleSearchButton = () => {
     if(active) {
@@ -60,10 +63,8 @@
   }
 
   const showGeoJson = () => {
-    if($searchFeatureLayer) {
-      $map.remove($searchFeatureLayer);
-    }
-    if(!$searchResult) return;
+    $map.remove($searchFeatureLayer);
+    if(!$searchResult || disabled) return;
     const blob = new Blob([JSON.stringify($searchResult.geojson)], {
       type: "application/json",
     });
@@ -77,7 +78,7 @@
         type: "simple",
         symbol: 
           feature.geometry.type === "Point" ? 
-          createPointSymbol($searchResult.option.color, 1, 12) : 
+          createPointSymbol($searchResult.option.color, 1, 8) : 
           createPolygonSymbol($searchResult.option.color, 0.4)
       }
     });
@@ -91,11 +92,12 @@
     });
   }
 
-  $: $searchResult, showGeoJson();
+  $: $searchResult, disabled, showGeoJson();
 </script>
 
 <div class="container">
   <Button
+    {disabled}
     color={$searchResult ? $searchResult.option.color : "neutral"}
     on:click={handleSearchButton}
   >
@@ -113,7 +115,9 @@
       type="text"
       placeholder={$searchResult ? "Realiza otra búsqueda..." : "Realiza una búsqueda..."}
       bind:value={filter} 
+      {disabled}
       style={`border-radius: ${active ? "8px 8px 0 0" : "8px"}`}
+      title={disabled ? "La búsqueda se deshabilita al ver las capas de información" : ""}
     >
     <SearchOptions 
       {active}
@@ -143,6 +147,9 @@
     width: 420px;
     font-weight: 300;
     transition: border-radius 0.3s;
+  }
+  input:disabled {
+    background-color: var(--gray-200);
   }
   input::placeholder {
     color: var(--gray-500);

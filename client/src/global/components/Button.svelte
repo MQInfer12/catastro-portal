@@ -6,10 +6,12 @@
   export let color: ColorType;
   export let text: string = "";
   export let iconPos: IconPos = "left";
+  export let disabled: boolean = false;
 </script>
 
 <button
   on:click
+  {disabled}
   style={`
     --color-1: var(--${color}-1); 
     --color-2: var(--${color}-2);
@@ -41,5 +43,10 @@
   }
   button:hover {
     background-color: var(--color-2);
+  }
+  button:disabled {
+    background-color: var(--gray-200);
+    border: 2px solid var(--gray-300);
+    pointer-events: none;
   }
 </style>

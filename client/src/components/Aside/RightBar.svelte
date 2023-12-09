@@ -1,9 +1,10 @@
 <script lang="ts">
+  import { catastroImages } from "../../global/store/db/catastroImages";
+  import { catastroLayers } from "../../global/store/db/catastroLayers";
   import ActualMap from "./ActualMap.svelte";
   import Basemaps from "./Basemaps.svelte";
+  import InformationLayers from "./InformationLayers.svelte";
   import Layers from "./Layers.svelte";
-  import { catastroImages } from "./data/catastroImages";
-  import { catastroLayers } from "./data/catastroLayers";
   import { page } from "./store/page";
 </script>
 
@@ -22,6 +23,8 @@
       layers={$catastroLayers}
       color="blue"
     />
+  {:else if $page === "Capas de información"}
+    <InformationLayers />
   {/if}
 </div>
 

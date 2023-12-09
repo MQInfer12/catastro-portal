@@ -43,6 +43,7 @@
   >
     <IconLayers />
   </LeftIconButton>
+  <hr />
   <LeftIconButton 
     on:click={() => $page = "Capas de información"} 
     title="Capas de información" 

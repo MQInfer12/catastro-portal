@@ -5,5 +5,6 @@ export interface CatastroLayer {
   name: string
   active: boolean
   src: string
-  data: WMSLayer | MapImageLayer
+  url: string
+  data: WMSLayer | MapImageLayer | null
 }

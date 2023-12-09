@@ -8,3 +8,4 @@ export const map = writable<Map>(new Map({
   basemap: "gray-vector",
 }));
 export const searchFeatureLayer = writable<GeoJSONLayer>();
+export const informationLayer = writable<GeoJSONLayer>();

@@ -10,9 +10,9 @@ import BMTopo from "../../../assets/images/basemaps/topo-vector.png";
 import BMOpenStreetRelief from "../../../assets/images/basemaps/streets-relief-vector.png";
 import BMTopo3D from "../../../assets/images/basemaps/topo-3d.png";
 import BMNavigation3D from "../../../assets/images/basemaps/navigation-3d.png";
-import BMNavigation3DOscuro from "../../../assets/images/basemaps/navigation-dark-3d.png";
+import { writable } from "svelte/store";
 
-export const arcgisBasemaps = [
+export const arcgisBasemaps = writable([
   {
     src: BMGris,
     name: "Gris",
@@ -72,10 +72,5 @@ export const arcgisBasemaps = [
     src: BMNavigation3D,
     name: "Navegación 3D",
     basemap: "navigation-3d"
-  },
-  /* {
-    src: BMNavigation3DOscuro,
-    name: "Navegación 3D oscuro",
-    basemap: "navigation-dark-3d"
-  }, */
-]
+  }
+])

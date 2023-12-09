@@ -1,19 +1,25 @@
 <script lang="ts">
   import Modal from "../../global/components/Modal.svelte";
-  import { searchModalState } from "../../global/store/searchModal";
+  import type { ColorType } from "../../global/interfaces/colorType";
+  import type { Feature } from "../../global/interfaces/geojson";
+
+  export let closeModal: () => void
+  export let title: string
+  export let color: ColorType
+  export let type: string
+  export let feature: Feature
 </script>
 
-{#if $searchModalState}
 <Modal 
-  on:click={() => $searchModalState = null}
-  text={$searchModalState.title}
-  color={$searchModalState.result.option.color}
+  on:click={closeModal}
+  text={title}
+  {color}
 >
   <div class="container">
     <div 
       class="table-container"
       style={`
-        border: 1px solid var(--${$searchModalState.result.option.color}-2);
+        border: 1px solid var(--${color}-2);
       `}
     >
       <table>
@@ -22,21 +28,21 @@
             <th 
             class="th-title"
             style={`
-              background-color: var(--${$searchModalState.result.option.color}-2); 
+              background-color: var(--${color}-2); 
             `}
               colspan="2"
-            >{$searchModalState.result.option.type}</th>
+            >{type}</th>
           </tr>
         </thead>
         <tbody>
-          {#each Object.keys($searchModalState.result.geojson.features[0].properties) as key}
+          {#each Object.keys(feature.properties) as key}
             {#if !(key === "FID" || key === "OBJECTID")}
               <tr>
                 <th 
                   class="th-table"
                   style={`
-                    background-color: var(--${$searchModalState.result.option.color}-1); 
-                    border: 1px solid var(--${$searchModalState.result.option.color}-2);
+                    background-color: var(--${color}-1); 
+                    border: 1px solid var(--${color}-2);
                   `}
                 >
                   {#if key === "Shape_Area"}
@@ -49,9 +55,9 @@
                 </th>
                 <td
                   style={`
-                    border: 1px solid var(--${$searchModalState.result.option.color}-2);
+                    border: 1px solid var(--${color}-2);
                   `}
-                >{$searchModalState.result.geojson.features[0].properties[key]}</td>
+                >{feature.properties[key]}</td>
               </tr>
             {/if}
           {/each}
@@ -60,7 +66,6 @@
     </div>
   </div>
 </Modal>
-{/if}
 
 <style>
   .container {

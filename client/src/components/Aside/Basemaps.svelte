@@ -1,7 +1,7 @@
 <script lang="ts">
+  import { arcgisBasemaps } from "../../global/store/db/arcgisBasemaps";
   import { map } from "../../global/store/map";
   import BasemapCard from "./BasemapCard.svelte";
-  import { arcgisBasemaps } from "./data/arcgisBasemaps";
 
   const changeBasemap = (basemap: string) => {
     //@ts-ignore
@@ -11,7 +11,7 @@
 </script>
 
 <div>
-  {#each arcgisBasemaps as bm}
+  {#each $arcgisBasemaps as bm}
     <BasemapCard 
       src={bm.src}
       name={bm.name}
