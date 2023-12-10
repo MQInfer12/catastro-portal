@@ -18,12 +18,16 @@
   import { cachedServices } from "./global/store/state/cachedServices";
   import ServicesData from "./global/data/services";
   import type { ServiceData } from "./global/interfaces/serviceData";
+  import LoadingFs from "./global/components/LoadingFS.svelte";
 
+  let loading1 = true;
+  let loading2 = true;
   onMount(async () => {
     /* LLAMADA AL BACKEND PARA LLENAR DATOS */
     $arcgisBasemaps = await getRequest("mapabase") || [];
     $catastroImages = await getRequest("catastro/image") || [];
     $catastroLayers = await getRequest("catastro/layer") || [];
+    loading1 = false;
 
     /* ONCLICK MAPA */
     const clickHandler = (e: any) => {
@@ -60,10 +64,10 @@
       console.log("Usando servicios cacheados");
       flag = false;
       $services = ServicesData as ServiceData[];
+      loading2 = false;
     } else if(!flag) {
       flag = true;
       $services = await getRequest("servicio") || [];
-      console.log($services);
       for(const service of $services) {
         if(service.data) continue;
         console.log("fetching: " + service.name);
@@ -80,6 +84,7 @@
           console.log("Error al obtener: " + service.name);
         }
       }
+      loading2 = false;
     }
   }
 
@@ -99,6 +104,9 @@
   $: $services, $cachedServices, fetchServices();
 </script>
 
+{#if loading1 || loading2}
+<LoadingFs />
+{/if}
 <main>
   <Header />
   <Aside />
