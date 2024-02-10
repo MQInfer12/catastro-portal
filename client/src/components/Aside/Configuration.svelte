@@ -16,6 +16,7 @@
     <Button
       color="neutral"
       on:click={changeCached}
+      disabled
     ><IconContainer>
       {#if $cachedServices}
       <IconCheckNoOutline />

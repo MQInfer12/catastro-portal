@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "src": null,
+    "src": "basemaps/image.png",
     "name": "Gris",
     "basemap": "gray-vector"
   },
@@ -13,61 +13,61 @@
   },
   {
     "id": 3,
-    "src": null,
+    "src": "basemaps/image2.png",
     "name": "Satélite",
     "basemap": "satellite"
   },
   {
     "id": 4,
-    "src": null,
+    "src": "basemaps/image3.png",
     "name": "Satélite híbrido",
     "basemap": "hybrid"
   },
   {
     "id": 5,
-    "src": null,
+    "src": "basemaps/image4.png",
     "name": "Open Street Maps",
     "basemap": "osm"
   },
   {
     "id": 6,
-    "src": null,
+    "src": "basemaps/image5.png",
     "name": "Open Street",
     "basemap": "streets-vector"
   },
   {
     "id": 7,
-    "src": null,
+    "src": "basemaps/image6.png",
     "name": "Open Street oscuro",
     "basemap": "streets-night-vector"
   },
   {
     "id": 8,
-    "src": null,
+    "src": "basemaps/image7.png",
     "name": "Open Street navegación",
     "basemap": "streets-navigation-vector"
   },
   {
     "id": 9,
-    "src": null,
+    "src": "basemaps/image8.png",
     "name": "Topo",
     "basemap": "topo-vector"
   },
   {
     "id": 10,
-    "src": null,
+    "src": "basemaps/image9.png",
     "name": "Open Street relieve",
     "basemap": "streets-relief-vector"
   },
   {
     "id": 11,
-    "src": null,
+    "src": "basemaps/image10.png",
     "name": "Topo 3D",
     "basemap": "topo-3d"
   },
   {
     "id": 12,
-    "src": null,
+    "src": "basemaps/image11.png",
     "name": "Navegación 3D",
     "basemap": "navigation-3d"
   }

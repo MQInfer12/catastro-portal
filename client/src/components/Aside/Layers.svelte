@@ -27,10 +27,11 @@
 <div class="container">
   {#if layers.length === 0}
     <div class="ups">
-      <p>Ups, no encontramos objetos aquí...</p>
+      <p><!-- Ups, no encontramos objetos aquí... -->En este momento no pudimos acceder a los servicios catastrales, vuelva en unos momentos.</p>
       <Button 
         text="Volver a cargar"
         color="purple"
+        disabled
         on:click={reload}
       ><IconContainer><IconReload /></IconContainer></Button>
     </div>
